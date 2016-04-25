@@ -74,7 +74,8 @@ class PgsqlDB{
         return $this -> last_query;
     }
     function fetch_array($query_id){
-        return pg_fetch_assoc($query_id);
+        $result = pg_fetch_assoc($query_id);
+        return $result === false?null:$result;
     }
     function item($str, $key = null){
         $qid = $this -> query($str);
